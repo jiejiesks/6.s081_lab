@@ -34,12 +34,12 @@
 // and to keep track in memory of logged block# before commit.
 struct logheader {
   int n;
-  int block[LOGSIZE];
+  int block[LOGSIZE];//一个包含磁盘扇区号的数组，logheader后面跟着的是这些扇区的数据
 };
 
 struct log {
   struct spinlock lock;
-  int start;
+  int start;//磁盘中log的起始位置
   int size;
   int outstanding; // how many FS sys calls are executing.
   int committing;  // in commit(), please wait.
