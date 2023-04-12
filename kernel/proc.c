@@ -476,6 +476,7 @@ scheduler(void)
         // before jumping back to us.
         p->state = RUNNING;
         c->proc = p;
+        //c->context 就是调度程序的上下文，保存起来，切换到需要运行进程的上下文p->context
         swtch(&c->context, &p->context);
 
         // Process is done running for now.
@@ -514,6 +515,7 @@ sched(void)
     panic("sched interruptible");
 
   intena = mycpu()->intena;
+  //将当前进程的上下文保存起来，切换到cpu调度程序的上下文，切换之后就相当于scheduler()调用完swtch()之后的返回
   swtch(&p->context, &mycpu()->context);
   mycpu()->intena = intena;
 }
