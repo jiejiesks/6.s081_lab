@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "defs.h": "c",
+        "fs.h": "c",
+        "file.h": "c",
+        "cstdlib": "c",
+        "spinlock.h": "c",
+        "param.h": "c"
+    }
+}
